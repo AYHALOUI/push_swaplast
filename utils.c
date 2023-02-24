@@ -1,3 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahaloui <ahaloui@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/24 12:53:31 by ahaloui           #+#    #+#             */
+/*   Updated: 2023/02/24 12:54:39 by ahaloui          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+
 #include "push_swap.h"
 
 int check_if_duplicate(t_list **head)
@@ -75,96 +89,3 @@ void add_element(t_list **head, int ac, char **av)
     else if (is_sorted(&temp))
         return ;
 }
-
-
-//function to sort three elements
-void sort_three(t_list **head)
-{
-    t_list *temp;
-
-    temp = *head;
-    if (temp->data > temp->next->data)
-        sa(head);
-    if (temp->data > temp->next->next->data)
-        ra(head);
-    if (temp->next->data > temp->next->next->data)
-        rra(head);   
-}
-
-// function to sort five elements
-void sort_five(t_list **head_a, t_list **head_b)
-{
-    t_list *temp;
-    int i;
-
-    i = 0;
-    temp = *head_a;
-    while (i < 2)
-    {
-        pb(head_a, head_b);
-        i++;
-    }
-    sort_three(head_a);
-    pa(head_a, head_b);
-    pa(head_a, head_b);
-}
-
-// function to sort more than five elements
-void sort_more_than_five(t_list **head_a, t_list **head_b)
-{
-    t_list *temp;
-    int i;
-
-    i = 0;
-    temp = *head_a;
-    while (i < 3)
-    {
-        pb(head_a, head_b);
-        i++;
-    }
-    sort_three(head_a);
-    pa(head_a, head_b);
-    pa(head_a, head_b);
-    pa(head_a, head_b);
-}
-
-// function to sort the stack
-void sort(t_list **head_a, t_list **head_b)
-{
-    t_list *temp;
-    int size;
-
-    temp = *head_a;
-    size = ft_lstsize(temp);
-    if (size == 2)
-    {
-        sa(head_a);
-        return ;
-    }
-    else if (size == 3)
-        sort_three(head_a);
-    else if (size == 4)
-    {
-        pb(head_a, head_b);
-        sort_three(head_a);
-        pa(head_a, head_b);
-    }
-    else if (size == 5)
-        sort_five(head_a, head_b);
-    else if (size > 5)
-        sort_more_than_five(head_a, head_b);
-}
-
-// int main(int ac, char **av)
-// {
-//     t_list *head_a;
-//     t_list *head_b;
-
-//     head_a = NULL;
-//     head_b = NULL;
-//     if (ac == 1)
-//         return (0);
-//     add_element(&head_a, ac, av);
-//     sort(&head_a, &head_b);
-//     return (0);
-// }

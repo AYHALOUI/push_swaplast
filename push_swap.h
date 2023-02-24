@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahaloui <ahaloui@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/24 12:53:23 by ahaloui           #+#    #+#             */
+/*   Updated: 2023/02/24 19:06:36 by ahaloui          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #ifndef PUSH_SWAP_h
 #define PUSH_SWAP_h
 
@@ -43,5 +56,19 @@ void    rrr(t_list **list_a, t_list **list_b);
 void    pa(t_list **list_a, t_list **list_b);
 void    pb(t_list **list_a, t_list **list_b);
 void    pp(t_list **list_a, t_list **list_b);
+
+// sort fucntions
+void sort_three(t_list **head);
+void sort_five(t_list **head_a, t_list **head_b);
+void sort_more_than_five(t_list **head_a, t_list **head_b);
+void sort(t_list **head_a, t_list **head_b);
+
+int find_min(t_list *head);
+int find_max(t_list *head);
+int get_index_max(t_list *head, int max);
+
+int get_index(t_list *head, int nbr);
+// index list
+void index_list(t_list *head);
 
 #endif
