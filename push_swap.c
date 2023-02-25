@@ -6,7 +6,7 @@
 /*   By: ahaloui <ahaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:45:16 by ahaloui           #+#    #+#             */
-/*   Updated: 2023/02/24 22:45:43 by ahaloui          ###   ########.fr       */
+/*   Updated: 2023/02/25 18:51:53 by ahaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
         temp = head;
         while (temp != NULL)
         {
-            printf("%d\n", temp->data);
+            printf("data => %d\t index=> %d\n", temp->data, temp->index);
             temp = temp->next;
         }
     }
@@ -32,11 +32,11 @@ int main(int ac, char **av)
 {
     // atexit(ff);
     t_list *head_a, *head_b;
-    //t_list *temp;
+    // t_list *temp;
     add_element(&head_a ,ac, av);
     index_list(head_a);
     sort(&head_a, &head_b);
-    // temp = head_a;
+    //temp = head_a;
     // while (temp != NULL)
     // {
     //     printf("data => %d \t index => %d\n", temp->data, temp->index);
@@ -44,6 +44,8 @@ int main(int ac, char **av)
     // }
 
     //sort(&head_a, &head_b);
-    // print_list(head_a);
+    print_list(head_b);
+    printf("liste a \n\n\n");
+    print_list(head_a);
     return (0);
 }

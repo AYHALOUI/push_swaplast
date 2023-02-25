@@ -6,7 +6,7 @@
 /*   By: ahaloui <ahaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:53:15 by ahaloui           #+#    #+#             */
-/*   Updated: 2023/02/24 22:50:33 by ahaloui          ###   ########.fr       */
+/*   Updated: 2023/02/25 19:00:18 by ahaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,13 +112,6 @@ int get_index_max(t_list *head, int max)
     return (0);
 }
 
-
-void sort_two(t_list *head)
-{
-    sa(&head);
-}
-
-// function to sort three elements
 void sort_three(t_list **head_a)
 {
     t_list *temp = *head_a;
@@ -152,8 +145,7 @@ void sort_three(t_list **head_a)
 }
 
 
-// function to sort four elements
-void sort_four(t_list **head_a, t_list **head_b)
+void sort_five(t_list **head_a, t_list **head_b)
 {
     int mid;
     int i;
@@ -176,52 +168,57 @@ void sort_four(t_list **head_a, t_list **head_b)
     pa(head_a, head_b);        
 }
 
-
-// void sort_four(t_list **head_a, t_list **head_b)
-// {
-//     // t_list *temp = *head_a;
-//     // int nbr = find_min(*head_a);
-//     // int min = get_index_max(*head_a, nbr);
-//     // int mid = ft_lstsize(*head_a) / 2;
-//     // if (min < mid)
-//     // {
-//     //     if (temp->data < temp->next->data)
-//     //     {
-//     //         //sa(head_a);    
-//     //         pb(head_a, head_b);
-//     //         sort_three(head_a);
-//     //         pa(head_a, head_b);
-//     //     }
-//     //     else if (temp->next->data < temp->data)
-//     //     {
-//     //         sa(head_a);
-//     //         pb(head_a, head_b);
-//     //         sort_three(head_a);
-//     //         pa(head_a, head_b);
-//     //     }
-        
-//     // }
-//     // else if (min > mid)
-//     // {
-//     //     if (temp->next->next->data < temp->next->next->next->data)
-//     //     {
-//     //         rra(head_a);
-//     //         rra(head_a);
-//     //         pb(head_a, head_b);
-//     //         sort_three(head_a);
-//     //         pa(head_a, head_b);
-//     //     }
-//     //     else if (temp->next->next->next->data > temp->next->next->data)
-//     //     {
-//     //         rra(head_a);
-//     //         pb(head_a, head_b);
-//     //         sort_three(head_a);
-//     //         pa(head_a, head_b);
-//     //     }
-//     // }
-
-//     int 
-// }
+void sort_more_then_five(t_list **head_a, t_list **head_b)
+{
+    int chunk = 5;
+    int nbr_chunk = ft_lstsize(*head_a) / chunk;
+    int nbr_chunk_fix = nbr_chunk;
+    int mid = nbr_chunk / 2;
+    int mid_fix = mid;
+    t_list *temp;
+    
+    temp = *head_a;
+    // printf("chunk => %d\n\n", nbr_chunk);
+    printf("midle => %d\n\n", mid);
+    while(chunk--)
+    {
+        printf("nbr-CHUNKD : %d\n\n", nbr_chunk);
+        while (ft_lstsize(*head_b) < nbr_chunk)
+        {
+        if ((*head_a)->index < nbr_chunk)
+        {
+            if ((*head_a)->index < mid)
+            {   
+                pb(head_a, head_b);
+                rb(head_b);
+            }
+            else
+                pb(head_a, head_b);
+        }
+        else
+            ra(head_a);
+        // while (temp->index > mid && temp->index != 0)
+        // {
+        //     rra(head_a);
+        //     printf("rra\n");
+        // }
+        // while (temp->index <= mid && temp->index != 0)
+        // {
+        //     ra(head_a);
+        //     printf("ra\n");
+        // }
+        // if (temp->index == 0)
+        // {
+        //     pb(head_a, head_b);
+        //     printf("pb\n");
+        // }  
+        }
+        nbr_chunk += nbr_chunk_fix;
+        mid = nbr_chunk - mid_fix;
+        printf("mid => %d\n\n", mid);
+    }
+    printf("\n");
+}
 
 void sort(t_list **head_a, t_list **head_b)
 {
@@ -238,14 +235,14 @@ void sort(t_list **head_a, t_list **head_b)
     else if (size == 3)
         sort_three(head_a);
     else if (size <= 5)
-        sort_four(head_a, head_b);
+        sort_five(head_a, head_b);
     else if (size > 5 && size <= 100)
     {
-        printf("ff");
+        sort_more_then_five(head_a, head_b);
     }
     else if (size > 100)
     {
         printf("ff");
     }
-        
 }
+
