@@ -6,7 +6,7 @@
 /*   By: ahaloui <ahaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:53:15 by ahaloui           #+#    #+#             */
-/*   Updated: 2023/02/25 19:00:18 by ahaloui          ###   ########.fr       */
+/*   Updated: 2023/02/25 21:07:50 by ahaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,10 +179,10 @@ void sort_more_then_five(t_list **head_a, t_list **head_b)
     
     temp = *head_a;
     // printf("chunk => %d\n\n", nbr_chunk);
-    printf("midle => %d\n\n", mid);
+    // printf("midle => %d\n\n", mid);
     while(chunk--)
     {
-        printf("nbr-CHUNKD : %d\n\n", nbr_chunk);
+        // printf("nbr-CHUNKD : %d\n\n", nbr_chunk);
         while (ft_lstsize(*head_b) < nbr_chunk)
         {
         if ((*head_a)->index < nbr_chunk)
@@ -215,10 +215,145 @@ void sort_more_then_five(t_list **head_a, t_list **head_b)
         }
         nbr_chunk += nbr_chunk_fix;
         mid = nbr_chunk - mid_fix;
-        printf("mid => %d\n\n", mid);
+        // printf("mid => %d\n\n", mid);
     }
-    printf("\n");
+    // int position = 0;
+    int middle;
+    int size_b = ft_lstsize(*head_b);
+    // printf("size of b => %d\n", size_b);
+    while (size_b)
+    {
+        middle = ft_lstsize(*head_b) / 2;
+        // if (get_position(*head_b, ft_lstsize(*head_b) - 1) > get_position(*head_b, ft_lstsize(*head_b) - 2))
+        // {
+        //     while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) >= middle)
+        //         rrb(head_b);
+        //     while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) < middle)
+        //         rb(head_b);
+        //     if (get_position(*head_b, ft_lstsize(*head_b) - 1) == 0)
+        //         pa(head_a, head_b);
+        // }
+        // else if (get_position(*head_b, ft_lstsize(*head_b) - 1) < get_position(*head_b, ft_lstsize(*head_b) - 2))
+        // {
+        //     while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) >= middle)
+        //         rrb(head_b);
+        //     while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) < middle)
+        //         rb(head_b);
+        //     if (get_position(*head_b, ft_lstsize(*head_b) - 1) == 0)
+        //         pa(head_a, head_b);
+        // }
+
+        while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) >= middle)
+                rrb(head_b);
+            while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) < middle)
+                rb(head_b);
+            if (get_position(*head_b, ft_lstsize(*head_b) - 1) == 0)
+                pa(head_a, head_b);
+        while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) >= middle)
+                rrb(head_b);
+            while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) < middle)
+                rb(head_b);
+            if (get_position(*head_b, ft_lstsize(*head_b) - 1) == 0)
+                pa(head_a, head_b);
+        size_b--;    
+    }
+    // printf("\n");
 }
+
+
+void sort_500(t_list **head_a, t_list **head_b)
+{
+    int chunk = 8;
+    int nbr_chunk = ft_lstsize(*head_a) / chunk;
+    int nbr_chunk_fix = nbr_chunk;
+    int mid = nbr_chunk / 2;
+    int mid_fix = mid;
+    t_list *temp;
+    
+    temp = *head_a;
+    // printf("chunk => %d\n\n", nbr_chunk);
+    // printf("midle => %d\n\n", mid);
+    while(chunk--)
+    {
+        // printf("nbr-CHUNKD : %d\n\n", nbr_chunk);
+        while (ft_lstsize(*head_b) < nbr_chunk)
+        {
+        if ((*head_a)->index < nbr_chunk)
+        {
+            if ((*head_a)->index < mid)
+            {   
+                pb(head_a, head_b);
+                rb(head_b);
+            }
+            else
+                pb(head_a, head_b);
+        }
+        else
+            ra(head_a);
+        // while (temp->index > mid && temp->index != 0)
+        // {
+        //     rra(head_a);
+        //     printf("rra\n");
+        // }
+        // while (temp->index <= mid && temp->index != 0)
+        // {
+        //     ra(head_a);
+        //     printf("ra\n");
+        // }
+        // if (temp->index == 0)
+        // {
+        //     pb(head_a, head_b);
+        //     printf("pb\n");
+        // }  
+        }
+        nbr_chunk += nbr_chunk_fix;
+        mid = nbr_chunk - mid_fix;
+        // printf("mid => %d\n\n", mid);
+    }
+    // int position = 0;
+    int middle;
+    int size_b = ft_lstsize(*head_b);
+    // printf("size of b => %d\n", size_b);
+    while (size_b)
+    {
+        middle = ft_lstsize(*head_b) / 2;
+        // if (get_position(*head_b, ft_lstsize(*head_b) - 1) > get_position(*head_b, ft_lstsize(*head_b) - 2))
+        // {
+        //     while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) >= middle)
+        //         rrb(head_b);
+        //     while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) < middle)
+        //         rb(head_b);
+        //     if (get_position(*head_b, ft_lstsize(*head_b) - 1) == 0)
+        //         pa(head_a, head_b);
+        // }
+        // else if (get_position(*head_b, ft_lstsize(*head_b) - 1) < get_position(*head_b, ft_lstsize(*head_b) - 2))
+        // {
+        //     while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) >= middle)
+        //         rrb(head_b);
+        //     while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) < middle)
+        //         rb(head_b);
+        //     if (get_position(*head_b, ft_lstsize(*head_b) - 1) == 0)
+        //         pa(head_a, head_b);
+        // }
+
+        while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) >= middle)
+                rrb(head_b);
+            while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) < middle)
+                rb(head_b);
+            if (get_position(*head_b, ft_lstsize(*head_b) - 1) == 0)
+                pa(head_a, head_b);
+        while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) >= middle)
+                rrb(head_b);
+            while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) < middle)
+                rb(head_b);
+            if (get_position(*head_b, ft_lstsize(*head_b) - 1) == 0)
+                pa(head_a, head_b);
+        size_b--;    
+    }
+    // printf("\n");
+}
+
+
 
 void sort(t_list **head_a, t_list **head_b)
 {
@@ -242,7 +377,7 @@ void sort(t_list **head_a, t_list **head_b)
     }
     else if (size > 100)
     {
-        printf("ff");
+        sort_500(head_a, head_b);
     }
 }
 
