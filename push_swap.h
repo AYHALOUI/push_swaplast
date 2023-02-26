@@ -6,7 +6,7 @@
 /*   By: ahaloui <ahaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:53:23 by ahaloui           #+#    #+#             */
-/*   Updated: 2023/02/25 21:06:52 by ahaloui          ###   ########.fr       */
+/*   Updated: 2023/02/26 16:18:00 by ahaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void sort_three(t_list **head);
 void sort_five(t_list **head_a, t_list **head_b);
 void sort_more_then_five(t_list **head_a, t_list **head_b);
 void sort_500(t_list **head_a, t_list **head_b);
+
+void sort_numbers(t_list **head_a, t_list **head_b, int chunk_divide);
 void sort(t_list **head_a, t_list **head_b);
 
 int find_min(t_list *head);

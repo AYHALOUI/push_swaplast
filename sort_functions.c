@@ -6,7 +6,7 @@
 /*   By: ahaloui <ahaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:53:15 by ahaloui           #+#    #+#             */
-/*   Updated: 2023/02/26 16:09:22 by ahaloui          ###   ########.fr       */
+/*   Updated: 2023/02/26 16:28:04 by ahaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -299,6 +299,59 @@ void sort_500(t_list **head_a, t_list **head_b)
 
 
 
+
+void sort_numbers(t_list **head_a, t_list **head_b, int chunk_divide)
+{
+    int chunk = chunk_divide;
+    int nbr_chunk = ft_lstsize(*head_a) / chunk;
+    int nbr_chunk_fix = nbr_chunk;
+    int mid = nbr_chunk / 2;
+    int mid_fix = mid;
+    t_list *temp;
+    
+    temp = *head_a;
+    while(chunk--)
+    {
+        while (ft_lstsize(*head_b) < nbr_chunk)
+        {
+        if ((*head_a)->index < nbr_chunk)
+        {
+            if ((*head_a)->index < mid)
+            {   
+                pb(head_a, head_b);
+                rb(head_b);
+            }
+            else
+                pb(head_a, head_b);
+        }
+        else
+            ra(head_a);
+        }
+        nbr_chunk += nbr_chunk_fix;
+        mid = nbr_chunk - mid_fix;
+    }
+    int middle;
+    int size_b = ft_lstsize(*head_b);
+    while (size_b)
+    {
+        middle = ft_lstsize(*head_b) / 2;
+        while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) >= middle)
+                rrb(head_b);
+            while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) < middle)
+                rb(head_b);
+            if (get_position(*head_b, ft_lstsize(*head_b) - 1) == 0)
+                pa(head_a, head_b);
+        while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) >= middle)
+                rrb(head_b);
+            while (get_position(*head_b, ft_lstsize(*head_b) - 1) != 0 && get_position(*head_b, ft_lstsize(*head_b) - 1) < middle)
+                rb(head_b);
+            if (get_position(*head_b, ft_lstsize(*head_b) - 1) == 0)
+                pa(head_a, head_b);
+        size_b--;    
+    }
+}
+
+
 void sort(t_list **head_a, t_list **head_b)
 {
     t_list *temp;
@@ -306,6 +359,7 @@ void sort(t_list **head_a, t_list **head_b)
 
     temp = *head_a;
     size = ft_lstsize(temp);
+    
     if (size == 2)
     {
         sa(head_a);
@@ -317,11 +371,12 @@ void sort(t_list **head_a, t_list **head_b)
         sort_five(head_a, head_b);
     else if (size > 5 && size <= 100)
     {
-        sort_more_then_five(head_a, head_b);
+        //sort_more_then_five(head_a, head_b);
+        sort_numbers(head_a, head_b, 5);
     }
     else if (size > 100)
     {
-        sort_500(head_a, head_b);
+        sort_numbers(head_a, head_b, 8);
     }
 }
 
