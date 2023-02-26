@@ -6,7 +6,7 @@
 /*   By: ahaloui <ahaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:45:16 by ahaloui           #+#    #+#             */
-/*   Updated: 2023/02/25 21:09:05 by ahaloui          ###   ########.fr       */
+/*   Updated: 2023/02/26 16:09:52 by ahaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ int main(int ac, char **av)
     //sort(&head_a, &head_b);
     // print_list(head_b);
     // printf("liste a \n\n\n");
-    print_list(head_a);
+    // print_list(head_a);
     return (0);
 }
