@@ -6,7 +6,7 @@
 /*   By: ahaloui <ahaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:53:15 by ahaloui           #+#    #+#             */
-/*   Updated: 2023/02/25 21:07:50 by ahaloui          ###   ########.fr       */
+/*   Updated: 2023/02/26 15:30:57 by ahaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,6 +258,21 @@ void sort_more_then_five(t_list **head_a, t_list **head_b)
         size_b--;    
     }
     // printf("\n");
+}
+
+// funnction to get the nearest element to the top of the stack
+int get_near(t_list *head, int nbr)
+{
+    int position = 0;
+    t_list *temp;
+
+    temp = head;
+    while (temp->index != nbr)
+    {
+        temp = temp->next;
+        position++;
+    }
+    return (position);
 }
 
 
