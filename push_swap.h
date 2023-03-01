@@ -6,7 +6,7 @@
 /*   By: ahaloui <ahaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:53:23 by ahaloui           #+#    #+#             */
-/*   Updated: 2023/02/28 23:32:45 by ahaloui          ###   ########.fr       */
+/*   Updated: 2023/03/01 19:58:20 by ahaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,22 @@ void sort_five(t_list **head_a, t_list **head_b);
 void sort_numbers(t_list **head_a, t_list **head_b, int chunk_divide);
 void sort(t_list **head_a, t_list **head_b);
 
-int find_min(t_list *head);
-int find_max(t_list *head);
-int get_index_max(t_list *head, int max);
 
-int get_index(t_list *head, int nbr);
-// index list
-void index_list(t_list *head);
-int	instriction(int size_list, int position);
+// sort three functions
+void    sort_three(t_list **head);
+void help_sort_three(t_list **head_a, int index_node);
+int get_index_max(t_list *head, int max);
+int find_max(t_list *head);
+
+// sort five functions
+void    sort_five(t_list **head_a, t_list **head_b);
+void    index_list(t_list *head);
+int     get_position(t_list *head, int index);
+
+
+// int instriction(int size, int position);
 int get_position(t_list *head, int index);
+int	instriction(int size_list, int position);
+void print_list(t_list *head);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ahaloui <ahaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:53:40 by ahaloui           #+#    #+#             */
-/*   Updated: 2023/02/24 12:53:42 by ahaloui          ###   ########.fr       */
+/*   Updated: 2023/03/01 20:04:45 by ahaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ void	rb(t_list **list)
 //rr : ra and rb at the same time.
 void	rr(t_list **list_a, t_list **list_b)
 {
-    ra(list_a);
+    if (!*list_a || !*list_b || list_a || list_a)
+		return ;
     rb(list_b);
+    ra(list_a);
     ft_printf("rr\n");
 }
